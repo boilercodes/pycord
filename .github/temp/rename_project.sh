@@ -23,7 +23,7 @@ repo="$author/$name"
 
 # Change pyproject.toml
 sed -i "s|rmenai-blueprints/pycord|$name|g" pyproject.toml # Separator is |
-sed -i "s/My Python template/$description/g" pyproject.toml # Remove description
+sed -i "s/My Pycord template/$description/g" pyproject.toml # Remove description
 sed -i "s/rmenai <rami.menai@outlook.com>/$author/g" pyproject.toml # Replace authors
 
 # Change LICENSE

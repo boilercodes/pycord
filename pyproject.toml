@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "rmenai-blueprints/pycord"
 version = "0.1.0"
-description = "My Python template"
+description = "My Pycord template"
 authors = ["rmenai <rami.menai@outlook.com>"]
 license = "MIT"
 

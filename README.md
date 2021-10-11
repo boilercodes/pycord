@@ -1,13 +1,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/rmenai-blueprints/pycord">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2048px-Python-logo-notext.svg.png" alt="Logo" width="80" height="80">
+    <img src="https://avatars.githubusercontent.com/u/89700626?v=4&s=160" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Python</h3>
+<h3 align="center">Pycord</h3>
 
   <p align="center">
-    An interpreted high-level general-purpose programming language
+    A maintained fork of discord.py
     <br />
     <a href="https://github.com/rmenai-blueprints/pycord"><strong>Explore the docs »</strong></a>
     <br />
@@ -44,8 +44,7 @@
 
 ## About The Project
 
-This is my main python projects structure. It is pretty much complete, containing all the tools you need for a professional
-project.
+This is the template I use when creating discord bots with Pycord. It is pretty much complete, containing all the tools you need for a professional project.
 
 <!-- Usage -->
 
