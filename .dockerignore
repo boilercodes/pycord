@@ -2,6 +2,6 @@
 *
 
 # Make exceptions for what's needed
-!app
+!bot
 !pyproject.toml
 !poetry.lock

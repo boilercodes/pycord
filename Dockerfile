@@ -22,4 +22,4 @@ COPY . .
 CMD ["task", "start"]
 
 # Define docker persistent volumes
-VOLUME /app/app/logs
+VOLUME /app/bot/logs
