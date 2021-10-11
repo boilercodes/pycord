@@ -43,7 +43,8 @@ if root.handlers:
         root.removeHandler(handler)
 
 # Silence irrelevant loggers
-logging.getLogger("").setLevel(logging.ERROR)
+logging.getLogger("discord").setLevel(logging.ERROR)
+logging.getLogger("asyncio").setLevel(logging.ERROR)
 
 # Setup new logging configuration
 logging.basicConfig(
