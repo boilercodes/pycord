@@ -7,7 +7,7 @@ on:
 
 jobs:
   rename:
-    if: ${{ github.repository	!= 'rmenai-blueprints/python' }}
+    if: ${{ github.repository	!= 'rmenai-blueprints/pycord' }}
     runs-on: ubuntu-latest
 
     steps:
