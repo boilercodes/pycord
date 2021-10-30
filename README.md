@@ -57,7 +57,7 @@ will change all the files to match your repository.
 
 ## Features
 
-#### Project:
+### Project:
 
 * [Docker](https://www.docker.com/) for container packaging.
 * [Poetry](https://python-poetry.org/) for dependency management.
@@ -71,7 +71,6 @@ will change all the files to match your repository.
 * [Lint & Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/lint-test.yaml)
   and [Build & Push](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build-push.yaml) GitHub
   workflows.
-* [Dependabot](https://dependabot.com/) automated dependency updates.
 * [Issues](https://github.com/rmenai-blueprints/pycord/tree/main/.github/ISSUE_TEMPLATE)
   and [pull requests](https://github.com/rmenai-blueprints/pycord/blob/main/.github/pull_request_template.md) templates.
 
