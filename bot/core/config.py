@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseSettings
 
 
@@ -18,6 +20,7 @@ class Global(BaseSettings):
     """The app settings."""
 
     client: Client = Client()
+    guild_ids: List[int]
 
     debug: bool = False
 
