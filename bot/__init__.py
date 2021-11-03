@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from bot.config import Settings
+from bot.core import settings
 
 # Set up file logging
 log_dir = Path("bot/logs")
@@ -25,7 +25,7 @@ file_handler.setLevel(logging.DEBUG)
 
 # Console handler prints to terminal
 console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.DEBUG if Settings.debug else logging.INFO)
+console_handler.setLevel(logging.DEBUG if settings.debug else logging.INFO)
 
 # Add colors for logging if available.
 try:

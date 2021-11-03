@@ -2,7 +2,7 @@ import logging
 
 import discord
 
-from bot.config import Client
+from bot.core import settings
 
 log = logging.getLogger(__name__)
 
@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 class Bot(discord.Bot):
     """Base bot class."""
 
-    name = Client.name
+    name = settings.client.name
 
     def __init__(self, **kwargs):
         """Initiate the client with slash commands."""
