@@ -1,13 +1,16 @@
 import logging.handlers
 import os
-from datetime import datetime
 from pathlib import Path
 
+import arrow
 from bot.core import settings
+
+# Set timestamp of when execution started (approximately)
+start_time = arrow.utcnow()
 
 # Set up file logging
 log_dir = Path("bot/logs")
-log_file = log_dir / f"{datetime.today().strftime('%d-%m-%Y')}.log"
+log_file = log_dir / f"{arrow.utcnow().strftime('%d-%m-%Y')}.log"
 os.makedirs(log_dir, exist_ok=True)
 
 # File handler rotates logs every 5 MB
