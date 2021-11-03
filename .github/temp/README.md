@@ -83,9 +83,12 @@ The requirements are:
 
 To run this project, you will need to add the following environment variables to your .env file.
 
-| Settings | Description                   | Required |
-|----------|-------------------------------|----------|
-| DEBUG    | Toggles debug mode in logging | No       |
+| Variable  | Description            | Default    |
+|-----------|------------------------|------------|
+| BOT_NAME  | The name of the bot    | "Bot"      |
+| BOT_TOKEN | The token of the bot   | * Required |
+| Debug     | Toggles debug mode     | False      |
+| GUILD_IDS | The servers of the bot | * Required |
 
 <!-- USAGE EXAMPLES -->
 
