@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 taskipy = "^1.8.2"
 py-cord = {git = "https://github.com/Pycord-Development/pycord"}
+pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 python-dotenv = "^0.19.0"
