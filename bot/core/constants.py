@@ -10,10 +10,11 @@ class Colours(BaseModel):
     orange = 0xE67E22
     pink = 0xCF84E0
     purple = 0xB734EB
+    red = 0xFF0000
     soft_green = 0x68C290
     soft_orange = 0xF9CB54
     soft_red = 0xCD6D6D
-    yellow = 0xF9F586
+    yellow = 0xF8E500
     python_blue = 0x4B8BBE
     python_yellow = 0xFFD43B
     grass_green = 0x66FF00
@@ -24,6 +25,9 @@ class Constants(BaseModel):
     """The app constants."""
 
     colours: Colours = Colours()
+
+    low_latency: int = 200
+    high_latency: int = 400
 
 
 constants = Constants()
