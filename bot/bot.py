@@ -1,13 +1,15 @@
 import logging
+from abc import ABC
 
 import discord
+from discord import Cog
 
 from bot.core import settings
 
 log = logging.getLogger(__name__)
 
 
-class Bot(discord.Bot):
+class Bot(discord.Bot, ABC):
     """Base bot class."""
 
     name = settings.client.name
@@ -15,6 +17,11 @@ class Bot(discord.Bot):
     def __init__(self, **kwargs):
         """Initiate the client with slash commands."""
         super().__init__(**kwargs)
+
+    def add_cog(self, cog: Cog, *, override: bool = False) -> None:
+        """Log whenever a cog is loaded."""
+        super().add_cog(cog, override=override)
+        log.debug(f"Cog loaded: {cog.qualified_name}")
 
     async def on_ready(self) -> None:
         """Triggered when the bot is ready."""
