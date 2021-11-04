@@ -34,6 +34,7 @@
       </ul>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -74,6 +75,8 @@ will change all the files to match your repository.
 * [Issues](https://github.com/rmenai-blueprints/pycord/tree/main/.github/ISSUE_TEMPLATE)
   and [pull requests](https://github.com/rmenai-blueprints/pycord/blob/main/.github/pull_request_template.md) templates.
 
+<!-- CONTRIBUTING -->
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/rmenai-blueprints/pycord/blob/main/CONTRIBUTING.md) for ways to get started.
@@ -84,6 +87,12 @@ See [CONTRIBUTING.md](https://github.com/rmenai-blueprints/pycord/blob/main/CONT
 
 Distributed under the MIT License. See [LICENSE](https://github.com/rmenai-blueprints/pycord/blob/main/LICENSE) for more
 information.
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgements
+
+ - [sir-lancebot](https://github.com/python-discord/sir-lancebot)
 
 <!-- CONTACT -->
 
