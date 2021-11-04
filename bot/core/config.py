@@ -21,6 +21,7 @@ class Global(BaseSettings):
 
     client: Client = Client()
     guild_ids: List[int]
+    dev_guild_ids: List[int]
 
     debug: bool = False
 
@@ -28,6 +29,11 @@ class Global(BaseSettings):
         """The Pydantic settings configuration."""
 
         env_file = ".env"
+        fields = {
+            "dev_guild_ids": {
+                "env": ["DEV_GUILD_IDS", "GUILD_IDS"]
+            }
+        }
 
 
 settings = Global()
