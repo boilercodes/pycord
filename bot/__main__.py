@@ -1,6 +1,10 @@
+import logging
+
 from bot.bot import bot
 from bot.core import settings
 from bot.utils.extensions import walk_extensions
+
+log = logging.getLogger(__name__)
 
 # Load all cogs extensions.
 for ext in walk_extensions():
