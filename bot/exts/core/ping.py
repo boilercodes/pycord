@@ -20,7 +20,7 @@ class Ping(commands.Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
 
-    @slash_command(guild_ids=settings.guild_ids, name="ping")
+    @slash_command(guild_ids=settings.guild_ids)
     async def ping(self, ctx: ApplicationContext) -> None:
         """Ping the bot to see its latency and uptime."""
         difference = relativedelta(arrow.utcnow() - start_time)
