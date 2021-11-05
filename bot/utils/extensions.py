@@ -4,6 +4,7 @@ import pkgutil
 from typing import Iterator, NoReturn
 
 from bot import exts
+from bot.bot import bot
 
 
 def unqualify(name: str) -> str:
@@ -31,5 +32,6 @@ def walk_extensions() -> Iterator[str]:
         yield module.name
 
 
+# Required for the core.extensions cog.
 EXTENSIONS = frozenset(walk_extensions())
-LOADED_EXTENSIONS = set(EXTENSIONS)
+loaded_extensions = bot.extensions
