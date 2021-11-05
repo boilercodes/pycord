@@ -23,14 +23,21 @@ class Bot(discord.Bot, ABC):
             connector=TCPConnector(resolver=AsyncResolver(), family=socket.AF_INET)
         )
 
+    async def on_ready(self) -> None:
+        """Triggered when the bot is ready."""
+        log.info(f"Started bot as {self.user} (ID: {self.user.id})")
+
+    async def close(self) -> None:
+        """Triggered when the bot is closed."""
+        await super().close()
+
+        if self.http_session:
+            await self.http_session.close()
+
     def add_cog(self, cog: Cog, *, override: bool = False) -> None:
         """Log whenever a cog is loaded."""
         super().add_cog(cog, override=override)
         log.debug(f"Cog loaded: {cog.qualified_name}")
-
-    async def on_ready(self) -> None:
-        """Triggered when the bot is ready."""
-        log.info(f"Started bot as {self.user} (ID: {self.user.id})")
 
 
 bot = Bot()
