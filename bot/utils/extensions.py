@@ -32,3 +32,4 @@ def walk_extensions() -> Iterator[str]:
 
 
 EXTENSIONS = frozenset(walk_extensions())
+LOADED_EXTENSIONS = set(EXTENSIONS)
