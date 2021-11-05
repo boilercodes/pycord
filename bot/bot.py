@@ -1,7 +1,9 @@
 import logging
+import socket
 from abc import ABC
 
 import discord
+from aiohttp import AsyncResolver, ClientSession, TCPConnector
 from discord import Cog
 
 from bot.core import settings
@@ -17,6 +19,9 @@ class Bot(discord.Bot, ABC):
     def __init__(self, **kwargs):
         """Initiate the client with slash commands."""
         super().__init__(**kwargs)
+        self.http_session = ClientSession(
+            connector=TCPConnector(resolver=AsyncResolver(), family=socket.AF_INET)
+        )
 
     def add_cog(self, cog: Cog, *, override: bool = False) -> None:
         """Log whenever a cog is loaded."""
