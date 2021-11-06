@@ -3,7 +3,7 @@ from enum import Enum
 from functools import partial
 from typing import Iterable, Optional
 
-from discord.commands import Option, OptionChoice, slash_command
+from discord.commands import Option, OptionChoice, permissions, slash_command
 from discord.commands.context import ApplicationContext, AutocompleteContext
 from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded
 from discord.ext import commands
@@ -62,6 +62,7 @@ class Extensions(commands.Cog):
         self.bot = bot
 
     @slash_command(guild_ids=settings.dev_guild_ids)
+    @permissions.has_role(settings.roles.admin)
     async def ext_load(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -74,6 +75,7 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @slash_command(guild_ids=settings.dev_guild_ids)
+    @permissions.has_role(settings.roles.admin)
     async def ext_unload(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -86,6 +88,7 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @slash_command(guild_ids=settings.dev_guild_ids)
+    @permissions.has_role(settings.roles.admin)
     async def ext_reload(
             self, ctx: ApplicationContext,
             extension: Option(
