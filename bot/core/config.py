@@ -11,7 +11,7 @@ class Client(BaseSettings):
     token: str
 
     @validator("token")
-    def check_token_format(self, v: str) -> str:
+    def check_token_format(cls, v: str) -> str:
         """Validate discord tokens format."""
         pattern = re.compile(r"\w{24}\.\w{6}\.\w{27}")
         assert pattern.fullmatch(v), f"Discord token must follow >> {pattern.pattern} << pattern."
@@ -49,7 +49,7 @@ class Global(BaseSettings):
     debug: bool = False
 
     @validator("guild_ids", "dev_guild_ids")
-    def check_ids_format(self, v: List[int]) -> List[int]:
+    def check_ids_format(cls, v: List[int]) -> List[int]:
         """Validate discord ids format."""
         for discord_id in v:
             assert len(str(discord_id)) == 18, "Discord ids must have a length of 18."
