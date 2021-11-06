@@ -41,8 +41,8 @@ class Global(BaseSettings):
     """The app settings."""
 
     client: Client = Client()
-    guild_ids: List[int]
-    dev_guild_ids: List[int]
+    guild_ids: List[int] = []
+    dev_guild_ids: List[int] = guild_ids
 
     roles: Roles = Roles()
 
