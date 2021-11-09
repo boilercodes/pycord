@@ -2,16 +2,16 @@ import logging
 import socket
 from abc import ABC
 
-import discord
 from aiohttp import AsyncResolver, ClientSession, TCPConnector
 from discord import Cog
+from discord.ext import commands
 
 from bot.core import settings
 
 log = logging.getLogger(__name__)
 
 
-class Bot(discord.Bot, ABC):
+class Bot(commands.Bot, ABC):
     """Base bot class."""
 
     name = settings.client.name
