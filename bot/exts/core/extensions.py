@@ -3,8 +3,11 @@ from enum import Enum
 from functools import partial
 from typing import Iterable, Optional
 
-from discord.commands import Option, OptionChoice, permissions, slash_command
-from discord.commands.context import ApplicationContext, AutocompleteContext
+from discord.commands import (
+    ApplicationContext, AutocompleteContext,
+    Option, OptionChoice,
+    permissions, slash_command
+)
 from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded
 from discord.ext import commands
 
