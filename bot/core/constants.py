@@ -21,10 +21,21 @@ class Colours(BaseModel):
     gold = 0xE6C200
 
 
+class Emojis(BaseModel):
+    """Emoji codes."""
+
+    track_previous = "\u23EE"  # ⏮
+    track_next = "\u23ED"  # ⏭
+    arrow_left = "\u2B05"  # ⬅
+    arrow_right = "\u27A1"  # ➡
+    lock = "\U0001F512"  # 🔒
+
+
 class Constants(BaseModel):
     """The app constants."""
 
     colours: Colours = Colours()
+    emojis: Emojis = Emojis()
 
     low_latency: int = 200
     high_latency: int = 400
