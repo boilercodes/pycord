@@ -31,11 +31,19 @@ class Emojis(BaseModel):
     lock = "\U0001F512"  # 🔒
 
 
+class Pagination(BaseModel):
+    """Pagination default settings."""
+
+    max_size = 500
+    timeout = 300  # In seconds
+
+
 class Constants(BaseModel):
     """The app constants."""
 
     colours: Colours = Colours()
     emojis: Emojis = Emojis()
+    pagination: Pagination = Pagination()
 
     low_latency: int = 200
     high_latency: int = 400

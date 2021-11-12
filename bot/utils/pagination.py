@@ -86,9 +86,9 @@ class LinePaginator(Paginator):
     @classmethod
     async def paginate(cls, lines: list[str], ctx: ApplicationContext, embed: Embed,
                        prefix: str = "", suffix: str = "", max_lines: Optional[int] = None,
-                       max_size: int = 500, empty: bool = True, restrict_to_user: User = None,
-                       timeout: int = 300, footer_text: str = None, url: str = None,
-                       exception_on_empty_embed: bool = False) -> None:
+                       max_size: int = constants.pagination.max_size, empty: bool = True,
+                       restrict_to_user: User = None, timeout: int = constants.pagination.timeout,
+                       footer_text: str = None, url: str = None, exception_on_empty_embed: bool = False) -> None:
         """
         Use a paginator and set of reactions to provide pagination over a set of lines.
 
@@ -263,8 +263,8 @@ class ImagePaginator(Paginator):
 
     @classmethod
     async def paginate(cls, pages: list[tuple[str, str]], ctx: ApplicationContext, embed: Embed,
-                       prefix: str = "", suffix: str = "", restrict_to_user: User = None, timeout: int = 300,
-                       footer_text: str = None, url: str = None,
+                       prefix: str = "", suffix: str = "", restrict_to_user: User = None,
+                       timeout: int = constants.pagination.timeout, footer_text: str = None, url: str = None,
                        exception_on_empty_embed: bool = False) -> None:
         """
         Use a paginator and set of reactions to provide pagination over a set of title/image pairs.
