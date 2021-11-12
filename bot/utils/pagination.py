@@ -88,7 +88,8 @@ class LinePaginator(Paginator):
                        prefix: str = "", suffix: str = "", max_lines: Optional[int] = None,
                        max_size: int = constants.pagination.max_size, empty: bool = True,
                        restrict_to_user: User = None, timeout: int = constants.pagination.timeout,
-                       footer_text: str = None, url: str = None, exception_on_empty_embed: bool = False) -> None:
+                       footer_text: str = None, url: str = None,
+                       exception_on_empty_embed: bool = False) -> None:  # pragma: no cover
         """
         Use a paginator and set of reactions to provide pagination over a set of lines.
 
@@ -250,10 +251,8 @@ class ImagePaginator(Paginator):
 
         If `empty` is True, an empty line will be placed after a given `line`.
         """
-        if line:
-            self._count = len(line)
-        else:
-            self._count = 0
+        self._count += len(line)
+
         self._current_page.append(line)
         self.close_page()
 
@@ -265,7 +264,7 @@ class ImagePaginator(Paginator):
     async def paginate(cls, pages: list[tuple[str, str]], ctx: ApplicationContext, embed: Embed,
                        prefix: str = "", suffix: str = "", restrict_to_user: User = None,
                        timeout: int = constants.pagination.timeout, footer_text: str = None, url: str = None,
-                       exception_on_empty_embed: bool = False) -> None:
+                       exception_on_empty_embed: bool = False) -> None:  # pragma: no cover
         """
         Use a paginator and set of reactions to provide pagination over a set of title/image pairs.
 
