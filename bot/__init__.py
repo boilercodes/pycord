@@ -2,7 +2,10 @@ import logging.handlers
 import os
 from pathlib import Path
 
+import aiohttp
 import arrow
+from aiohttp import TraceRequestEndParams
+
 from bot.core import settings
 
 # Set timestamp of when execution started.
@@ -43,7 +46,8 @@ if root.handlers:
         root.removeHandler(handler)
 
 # Silence irrelevant loggers.
-logging.getLogger("discord").setLevel(logging.ERROR)
+logging.getLogger("discord").setLevel(logging.INFO)
+logging.getLogger("discord.gateway").setLevel(logging.ERROR)
 logging.getLogger("asyncio").setLevel(logging.ERROR)
 
 # Setup new logging configuration.
@@ -53,3 +57,18 @@ logging.basicConfig(
     level=logging.DEBUG,
     handlers=[console_handler, file_handler]
 )
+
+
+async def on_request_end(session, context, params: TraceRequestEndParams) -> None:
+    """Log all HTTP requests."""
+    resp = params.response
+
+    # Format and send logging message.
+    protocol = f"HTTP/{resp.version.major}.{resp.version.minor}"
+    message = f'"{resp.method} - {protocol}" {resp.url} <{resp.status}>'
+    logging.getLogger('aiohttp.client').debug(message)
+
+
+# Configure aiohttp logging.
+trace_config = aiohttp.TraceConfig()
+trace_config.on_request_end.append(on_request_end)

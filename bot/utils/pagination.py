@@ -133,8 +133,6 @@ class LinePaginator(Paginator):
                 log.exception(f"Failed to add line to paginator: '{line}'")
                 raise  # Should propagate
 
-        log.debug(f"Paginator created with {len(paginator.pages)} pages")
-
         embed.description = paginator.pages[current_page]
 
         if len(paginator.pages) <= 1:
@@ -156,8 +154,10 @@ class LinePaginator(Paginator):
         if url:
             embed.url = url
 
-        interaction = await ctx.respond(embed=embed)
-        message = await interaction.original_message()
+        await ctx.respond(embed=embed)
+        message = await ctx.interaction.original_message()
+
+        log.debug(f"Paginator created with {len(paginator.pages)} pages (ID: {message.id})")
 
         for emoji in PAGINATION_EMOJIS:
             # Add all the applicable emoji to the message
@@ -167,7 +167,7 @@ class LinePaginator(Paginator):
             try:
                 reaction, user = await ctx.bot.wait_for("reaction_add", timeout=timeout, check=event_check)
             except asyncio.TimeoutError:
-                log.debug("Timed out waiting for a reaction")
+                log.debug(f"Timed out waiting for a reaction (ID: {message.id})")
                 break  # We're done, no reactions for the last 5 minutes
 
             # Deletes the users reaction
@@ -175,12 +175,12 @@ class LinePaginator(Paginator):
 
             reaction_type = ""
             if reaction.emoji == LOCK_EMOJI:
-                log.debug("Got lock reaction")
+                log.debug(f"Got lock reaction (ID: {message.id})")
                 break
 
             elif reaction.emoji == FIRST_EMOJI:
                 if current_page == 0:
-                    log.debug("Got first page reaction, but we're on the first page - ignoring")
+                    log.debug(f"Got first page reaction, but we're on the first page - ignoring (ID: {message.id})")
                     continue
 
                 current_page = 0
@@ -188,7 +188,7 @@ class LinePaginator(Paginator):
 
             elif reaction.emoji == LAST_EMOJI:
                 if current_page >= len(paginator.pages) - 1:
-                    log.debug("Got last page reaction, but we're on the last page - ignoring")
+                    log.debug(f"Got last page reaction, but we're on the last page - ignoring (ID: {message.id})")
                     continue
 
                 current_page = len(paginator.pages) - 1
@@ -196,7 +196,7 @@ class LinePaginator(Paginator):
 
             elif reaction.emoji == LEFT_EMOJI:
                 if current_page <= 0:
-                    log.debug("Got previous page reaction, but we're on the first page - ignoring")
+                    log.debug(f"Got previous page reaction, but we're on the first page - ignoring (ID: {message.id})")
                     continue
 
                 current_page -= 1
@@ -204,7 +204,7 @@ class LinePaginator(Paginator):
 
             elif reaction.emoji == RIGHT_EMOJI:
                 if current_page >= len(paginator.pages) - 1:
-                    log.debug("Got next page reaction, but we're on the last page - ignoring")
+                    log.debug(f"Got next page reaction, but we're on the last page - ignoring (ID: {message.id})")
                     continue
 
                 current_page += 1
@@ -219,11 +219,13 @@ class LinePaginator(Paginator):
                 embed.set_footer(text=f"{footer_text} (Page {current_page + 1}/{len(paginator.pages)})")
             else:
                 embed.set_footer(text=f"Page {current_page + 1}/{len(paginator.pages)}")
-            log.debug(f"Got {reaction_type} page reaction - changing to page {current_page + 1}/{len(paginator.pages)}")
+
+            page = f"{current_page + 1}/{len(paginator.pages)}"
+            log.debug(f"Got {reaction_type} page reaction - changing to page {page} (ID: {message.id})")
 
             await message.edit(embed=embed)
 
-        log.debug("Ending pagination and clearing reactions...")
+        log.debug(f"Ending pagination and clearing reactions... (ID: {message.id})")
         await message.clear_reactions()
 
 
@@ -309,8 +311,6 @@ class ImagePaginator(Paginator):
                 log.exception(f"Failed to add line {text} and image {image_url} to paginator")
                 raise
 
-        log.debug(f"Paginator created with {len(paginator.pages)} pages")
-
         embed.description = paginator.pages[current_page]
         image = paginator.images[current_page]
 
@@ -336,8 +336,10 @@ class ImagePaginator(Paginator):
         if url:
             embed.url = url
 
-        interaction = await ctx.respond(embed=embed)
-        message = await interaction.original_message()
+        await ctx.respond(embed=embed)
+        message = await ctx.interaction.original_message()
+
+        log.debug(f"Paginator created with {len(paginator.pages)} pages (ID: {message.id})")
 
         for emoji in PAGINATION_EMOJIS:
             await message.add_reaction(emoji)
@@ -346,7 +348,7 @@ class ImagePaginator(Paginator):
             try:
                 reaction, user = await ctx.bot.wait_for("reaction_add", timeout=timeout, check=event_check)
             except asyncio.TimeoutError:
-                log.debug("Timed out waiting for a reaction")
+                log.debug(f"Timed out waiting for a reaction (ID: {message.id})")
                 break  # We're done, no reactions for the last 5 minutes
 
             # Deletes the users reaction
@@ -354,12 +356,12 @@ class ImagePaginator(Paginator):
 
             reaction_type = ""
             if reaction.emoji == LOCK_EMOJI:
-                log.debug("Got lock reaction")
+                log.debug(f"Got lock reaction (ID: {message.id})")
                 break
 
             elif reaction.emoji == FIRST_EMOJI:
                 if current_page == 0:
-                    log.debug("Got first page reaction, but we're on the first page - ignoring")
+                    log.debug(f"Got first page reaction, but we're on the first page - ignoring (ID: {message.id})")
                     continue
 
                 current_page = 0
@@ -367,7 +369,7 @@ class ImagePaginator(Paginator):
 
             elif reaction.emoji == LAST_EMOJI:
                 if current_page >= len(paginator.pages) - 1:
-                    log.debug("Got last page reaction, but we're on the last page - ignoring")
+                    log.debug(f"Got last page reaction, but we're on the last page - ignoring (ID: {message.id})")
                     continue
 
                 current_page = len(paginator.pages) - 1
@@ -375,7 +377,7 @@ class ImagePaginator(Paginator):
 
             elif reaction.emoji == LEFT_EMOJI:
                 if current_page <= 0:
-                    log.debug("Got previous page reaction, but we're on the first page - ignoring")
+                    log.debug(f"Got previous page reaction, but we're on the first page - ignoring (ID: {message.id})")
                     continue
 
                 current_page -= 1
@@ -383,7 +385,7 @@ class ImagePaginator(Paginator):
 
             elif reaction.emoji == RIGHT_EMOJI:
                 if current_page >= len(paginator.pages) - 1:
-                    log.debug("Got next page reaction, but we're on the last page - ignoring")
+                    log.debug(f"Got next page reaction, but we're on the last page - ignoring (ID: {message.id})")
                     continue
 
                 current_page += 1
@@ -401,9 +403,11 @@ class ImagePaginator(Paginator):
                 embed.set_footer(text=f"{footer_text} (Page {current_page + 1}/{len(paginator.pages)})")
             else:
                 embed.set_footer(text=f"Page {current_page + 1}/{len(paginator.pages)}")
-            log.debug(f"Got {reaction_type} page reaction - changing to page {current_page + 1}/{len(paginator.pages)}")
+
+            page = f"{current_page + 1}/{len(paginator.pages)}"
+            log.debug(f"Got {reaction_type} page reaction - changing to page {page} (ID: {message.id})")
 
             await message.edit(embed=embed)
 
-        log.debug("Ending pagination and clearing reactions...")
+        log.debug(f"Ending pagination and clearing reactions... (ID: {message.id})")
         await message.clear_reactions()
