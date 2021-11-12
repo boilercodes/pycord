@@ -1,5 +1,4 @@
 import re
-from typing import List
 
 from pydantic import BaseSettings, validator
 
@@ -41,15 +40,15 @@ class Global(BaseSettings):
     """The app settings."""
 
     client: Client = Client()
-    guild_ids: List[int]
-    dev_guild_ids: List[int]
+    dev_guild_ids: list[int] = []
+    guild_ids: list[int]
 
     roles: Roles = Roles()
 
     debug: bool = False
 
     @validator("guild_ids", "dev_guild_ids")
-    def check_ids_format(cls, v: List[int]) -> List[int]:
+    def check_ids_format(cls, v: list[int]) -> list[int]:
         """Validate discord ids format."""
         for discord_id in v:
             assert len(str(discord_id)) == 18, "Discord ids must have a length of 18."
@@ -59,11 +58,6 @@ class Global(BaseSettings):
         """The Pydantic settings configuration."""
 
         env_file = ".env"
-        fields = {
-            "dev_guild_ids": {
-                "env": ["DEV_GUILD_IDS", "GUILD_IDS"]
-            }
-        }
 
 
 settings = Global()
