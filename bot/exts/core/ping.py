@@ -22,7 +22,7 @@ class Ping(commands.Cog):
 
     @slash_command(guild_ids=settings.guild_ids)
     async def ping(self, ctx: ApplicationContext) -> None:
-        """Ping the bot to see its latency and uptime."""
+        """🏓 Ping the bot to see its latency and uptime."""
         difference = relativedelta(arrow.utcnow() - start_time)
         uptime: str = start_time.shift(
             seconds=-difference.seconds,
