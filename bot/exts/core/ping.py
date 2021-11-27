@@ -35,7 +35,7 @@ class Ping(commands.Cog):
 
         embed = Embed(
             colour=color_level(latency),
-            description=f"• Gateway Latency: **{latency}ms.**\n• Start time: **{uptime}**."
+            description=f"• Gateway Latency: **{latency}ms**\n• Start time: **{uptime}**"
         )
 
         await ctx.respond(embed=embed)
