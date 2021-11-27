@@ -31,7 +31,7 @@ class Bot(commands.Bot, ABC):
         name = f"{self.user} (ID: {self.user.id})"
 
         devlog_msg = f"Connected {constants.emojis.partying_face}"
-        self.loop.create_task(self.send_log(devlog_msg, constants.colours.bright_green))
+        self.loop.create_task(self.send_log(devlog_msg, colour=constants.colours.bright_green))
 
         log.info(f"Started bot as {name}")
 
