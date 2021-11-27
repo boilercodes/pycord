@@ -2,7 +2,7 @@ from bot.core import constants
 from bot.utils.formatters import color_level
 
 
-def test_color_level() -> None:
+def test_color_level():
     """Test the `color_level` function."""
     low, high = 200, 400
 

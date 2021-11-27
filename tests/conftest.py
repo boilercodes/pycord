@@ -1,8 +1,18 @@
-import os
+import pytest
+
+from tests import helpers
 
 
-def pytest_configure() -> None:
-    """Configure required variables for the bot."""
-    # This is a fake randomly generated token.
-    os.environ['BOT_TOKEN'] = "ODk3MTVyNDO0MDAxODE0NTC4.YWRgYg.hqWNRy2vEoc8feoNqR0ubBCYwxo"
-    os.environ['GUILD_IDS'] = "[776477173123907605,831216309592653835]"
+@pytest.fixture
+def hashable_mocks():
+    return helpers.MockRole, helpers.MockMember, helpers.MockGuild
+
+
+@pytest.fixture
+def bot():
+    return helpers.MockBot()
+
+
+@pytest.fixture
+def ctx():
+    return helpers.MockContext()
