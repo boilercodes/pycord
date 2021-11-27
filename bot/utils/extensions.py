@@ -15,7 +15,7 @@ def walk_extensions() -> Iterator[str]:
     """Yield extension names from the bot.exts subpackage."""
 
     def on_error(name: str) -> NoReturn:
-        raise ImportError(name=name)  # pragma: no cover
+        raise ImportError(name=name)
 
     for module in pkgutil.walk_packages(exts.__path__, f"{exts.__name__}.", onerror=on_error):
         if unqualify(module.name).startswith("_"):

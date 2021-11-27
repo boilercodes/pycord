@@ -36,7 +36,7 @@ try:
 
     console_handler.setFormatter(
         ColoredFormatter(fmt=f"%(log_color)s{fmt}", datefmt=datefmt))
-except ModuleNotFoundError:  # pragma: no cover
+except ModuleNotFoundError:
     pass
 
 # Remove old loggers, if any.
@@ -59,7 +59,7 @@ logging.basicConfig(
 )
 
 
-async def on_request_end(session, context, params: TraceRequestEndParams) -> None:  # pragma: no cover
+async def on_request_end(session, context, params: TraceRequestEndParams) -> None:
     """Log all HTTP requests."""
     resp = params.response
 
