@@ -26,8 +26,8 @@ class Client(BaseSettings):
 class Roles(BaseSettings):
     """The roles settings."""
 
+    admin: str = "Admin"
     everyone: str = "@everyone"
-    admin: str = everyone
 
     class Config:
         """The Pydantic settings configuration."""
