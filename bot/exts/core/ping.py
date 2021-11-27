@@ -8,7 +8,7 @@ from discord.ext import commands
 
 from bot import start_time
 from bot.bot import Bot
-from bot.core import constants, settings
+from bot.core import settings
 from bot.utils.formatters import color_level
 
 log = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ class Ping(commands.Cog):
         latency = round(self.bot.latency * 1000)
 
         embed = Embed(
-            colour=color_level(latency, constants.low_latency, constants.high_latency),
+            colour=color_level(latency),
             description=f"• Gateway Latency: **{latency}ms.**\n• Start time: **{uptime}**."
         )
 

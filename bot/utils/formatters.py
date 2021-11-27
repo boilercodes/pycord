@@ -1,7 +1,7 @@
 from bot.core import constants
 
 
-def color_level(value: float, low: float, high: float) -> int:
+def color_level(value: float, low: float = constants.low_latency, high: float = constants.high_latency) -> int:
     """Return the color intensity of a value."""
     if value < low:
         return constants.colours.bright_green
