@@ -3,11 +3,11 @@ import socket
 from abc import ABC
 
 from aiohttp import AsyncResolver, ClientSession, TCPConnector
-from discord import Cog, Interaction
+from discord import Cog, Embed, HTTPException, Interaction
 from discord.ext import commands
 
 from bot import trace_config
-from bot.core import settings
+from bot.core import constants, settings
 
 log = logging.getLogger(__name__)
 
@@ -29,6 +29,10 @@ class Bot(commands.Bot, ABC):
     async def on_ready(self) -> None:
         """Triggered when the bot is ready."""
         name = f"{self.user} (ID: {self.user.id})"
+
+        devlog_msg = f"Connected {constants.emojis.partying_face}"
+        self.loop.create_task(self.send_log(devlog_msg, constants.colours.bright_green))
+
         log.info(f"Started bot as {name}")
 
     async def on_interaction(self, interaction: Interaction) -> None:
@@ -45,6 +49,28 @@ class Bot(commands.Bot, ABC):
         """Log whenever a cog is loaded."""
         super().add_cog(cog, override=override)
         log.debug(f"Cog loaded: {cog.qualified_name}")
+
+    async def send_log(self, description: str = None, colour: int = None, embed: Embed = None) -> None:
+        """Send an embed message to the devlog channel."""
+        devlog = self.get_channel(settings.channels.devlog)
+
+        if not devlog:
+            log.debug(f"Fetching the devlog channel as it wasn't found in the cache "
+                      f"(ID: {settings.channels.devlog})")
+            try:
+                devlog = await self.fetch_channel(settings.channels.devlog)
+            except HTTPException:
+                log.debug(f"Could not fetch the devlog channel so log message won't be sent "
+                          f"(ID: {settings.channels.devlog})")
+                return
+
+        if not embed:
+            embed = Embed(description=description)
+
+        if colour:
+            embed.colour = colour
+
+        await devlog.send(embed=embed)
 
     async def close(self) -> None:
         """Triggered when the bot is closed."""
