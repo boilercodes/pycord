@@ -2,8 +2,8 @@
 
 import importlib
 from collections import defaultdict
-from typing import Iterator
 from types import ModuleType
+from typing import Iterator
 
 from discord.commands import SlashCommand
 from discord.ext import commands

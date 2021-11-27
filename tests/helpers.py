@@ -12,8 +12,9 @@ from aiohttp import ClientSession
 from discord.commands import ApplicationContext
 from discord.types.member import MemberWithUser
 
-from tests._autospec import autospec  # noqa: F401 other modules import it via this module
 from bot.bot import Bot
+from tests._autospec import \
+    autospec  # noqa: F401 other modules import it via this module
 
 
 class HashableMixin(discord.mixins.EqualityComparable):
@@ -154,6 +155,7 @@ class MockGuild(CustomMockMixin, mock.Mock, HashableMixin):
     the mocked object. To get around that, you can set the non-standard attribute explicitly for the
     instance of `MockGuild`:
     """
+
     spec_set = guild_instance
 
     def __init__(self, roles: Optional[Iterable[MockRole]] = None, **kwargs) -> None:
@@ -178,6 +180,7 @@ class MockRole(CustomMockMixin, mock.Mock, ColourMixin, HashableMixin):
     Instances of this class will follow the specifications of `discord.Role` instances. For more
     information, see the `MockGuild` docstring.
     """
+
     spec_set = role_instance
 
     def __init__(self, **kwargs) -> None:
@@ -221,19 +224,22 @@ class MockMember(CustomMockMixin, mock.Mock, ColourMixin, HashableMixin):
     Instances of this class will follow the specifications of `discord.Member` instances. For more
     information, see the `MockGuild` docstring.
     """
-    spec_set = member_instance
 
-    def __init__(self, roles: Optional[Iterable[MockRole]] = None, **kwargs) -> None:
-        default_kwargs = {'name': 'member', 'id': next(self.discord_id), 'bot': False, "pending": False}
-        super().__init__(**ChainMap(kwargs, default_kwargs))
 
-        self.roles = [MockRole(name="@everyone", position=1, id=0)]
-        if roles:
-            self.roles.extend(roles)
-        self.top_role = max(self.roles)
+spec_set = member_instance
 
-        if 'mention' not in kwargs:
-            self.mention = f"@{self.name}"
+
+def __init__(self, roles: Optional[Iterable[MockRole]] = None, **kwargs) -> None:
+    default_kwargs = {'name': 'member', 'id': next(self.discord_id), 'bot': False, "pending": False}
+    super().__init__(**ChainMap(kwargs, default_kwargs))
+
+    self.roles = [MockRole(name="@everyone", position=1, id=0)]
+    if roles:
+        self.roles.extend(roles)
+    self.top_role = max(self.roles)
+
+    if 'mention' not in kwargs:
+        self.mention = f"@{self.name}"
 
 
 # Create a User instance to get a realistic Mock of `discord.User`
@@ -251,6 +257,7 @@ class MockUser(CustomMockMixin, mock.Mock, ColourMixin, HashableMixin):
     Instances of this class will follow the specifications of `discord.User` instances. For more
     information, see the `MockGuild` docstring.
     """
+
     spec_set = user_instance
 
     def __init__(self, **kwargs) -> None:
@@ -284,6 +291,7 @@ class MockBot(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.ext.commands.Bot` instances.
     For more information, see the `MockGuild` docstring.
     """
+
     spec_set = Bot()
     additional_spec_asyncs = ("wait_for",)
 
@@ -322,6 +330,7 @@ class MockTextChannel(CustomMockMixin, mock.Mock, HashableMixin):
     Instances of this class will follow the specifications of `discord.TextChannel` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = text_channel_instance
 
     def __init__(self, **kwargs) -> None:
@@ -339,6 +348,7 @@ class MockVoiceChannel(CustomMockMixin, mock.Mock, HashableMixin):
     Instances of this class will follow the specifications of `discord.VoiceChannel` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = voice_channel_instance
 
     def __init__(self, **kwargs) -> None:
@@ -364,6 +374,7 @@ class MockDMChannel(CustomMockMixin, mock.Mock, HashableMixin):
     Instances of this class will follow the specifications of `discord.TextChannel` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = dm_channel_instance
 
     def __init__(self, **kwargs) -> None:
@@ -428,9 +439,8 @@ class MockContext(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.ext.commands.Context`
     instances. For more information, see the `MockGuild` docstring.
     """
-    spec_set = context_instance
 
-    # additional_spec_asyncs = ("respond",)
+    spec_set = context_instance
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -453,6 +463,7 @@ class MockAttachment(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.Attachment` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = attachment_instance
 
 
@@ -463,6 +474,7 @@ class MockMessage(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.Message` instances. For more
     information, see the `MockGuild` docstring.
     """
+
     spec_set = message_instance
 
     def __init__(self, **kwargs) -> None:
@@ -484,6 +496,7 @@ class MockEmoji(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.Emoji` instances. For more
     information, see the `MockGuild` docstring.
     """
+
     spec_set = emoji_instance
 
     def __init__(self, **kwargs) -> None:
@@ -501,6 +514,7 @@ class MockPartialEmoji(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.PartialEmoji` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = partial_emoji_instance
 
 
@@ -515,6 +529,7 @@ class MockReaction(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.Reaction` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = reaction_instance
 
     def __init__(self, **kwargs) -> None:
@@ -540,5 +555,6 @@ class MockAsyncWebhook(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.Webhook` instances. For
     more information, see the `MockGuild` docstring.
     """
+
     spec_set = webhook_instance
     additional_spec_asyncs = ("send", "edit", "delete", "execute")
