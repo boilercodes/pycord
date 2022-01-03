@@ -9,6 +9,7 @@ from unittest import mock
 import discord
 import discord.mixins
 from aiohttp import ClientSession
+from discord import Interaction
 from discord.commands import ApplicationContext
 from discord.types.member import MemberWithUser
 
@@ -415,10 +416,22 @@ state = mock.MagicMock()
 channel = mock.MagicMock()
 message_instance = discord.Message(state=state, channel=channel, data=message_data)
 
+
 # Create a Context instance to get a realistic MagicMock of `discord.ext.commands.Context`
 # noinspection PyTypeChecker
 
-context_instance = ApplicationContext(bot=MockBot(), interaction=mock.MagicMock())
+class Context(ApplicationContext):
+    """Patch certain code breaking functions."""
+
+    def __init__(self, bot: Bot, interaction: Interaction):
+        super().__init__(bot, interaction)
+
+    def send_response(self):
+        """Avoid calling `self.response.is_done` to avoid breaking error."""
+        return self.interaction.response.send_message
+
+
+context_instance = Context(bot=MockBot(), interaction=mock.MagicMock())
 context_instance.invoked_from_error_handler = None
 
 
