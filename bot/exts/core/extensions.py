@@ -55,7 +55,6 @@ class Extensions(commands.Cog):
 
         return results
 
-    # [CommandPermission(settings.roles.admin, 2)]
     extensions = SlashCommandGroup(
         "ext", "Load, unload and reload a bot's extension.",
         guild_ids=settings.dev_guild_ids,
