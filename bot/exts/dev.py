@@ -22,5 +22,5 @@ class Dev(commands.Cog):
 
 
 def setup(bot: Bot) -> None:
-    """Loads the Dev cog."""
+    """Load the `Dev` cog."""
     bot.add_cog(Dev(bot))

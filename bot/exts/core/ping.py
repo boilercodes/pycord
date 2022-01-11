@@ -42,5 +42,5 @@ class Ping(commands.Cog):
 
 
 def setup(bot: Bot) -> None:
-    """Loads the `Ping` cog."""
+    """Load the `Ping` cog."""
     bot.add_cog(Ping(bot))
