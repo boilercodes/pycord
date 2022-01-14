@@ -27,12 +27,12 @@ class TestCommandName:
     def walk_commands(cog: commands.Cog) -> Iterator[SlashCommand]:
         """An iterator that recursively walks through `cog`'s commands and subcommands."""
         # Can't use Bot.walk_commands() or Cog.get_commands() cause those are instance methods.
-        for command in cog.__cog_commands__:
-            if command.parent is None:
-                yield command
-                if isinstance(command, commands.GroupMixin):
-                    # Annoyingly it returns duplicates for each alias so use a set to fix that
-                    yield from set(command.walk_commands())
+        for cmd in cog.__cog_commands__:
+            if cmd.parent is None:
+                yield cmd
+                if isinstance(cmd, commands.GroupMixin):
+                    # Annoyingly it returns duplicates for each alias so use a set to fix that.
+                    yield from set(cmd.walk_commands())
 
     def get_all_commands(self) -> Iterator[SlashCommand]:
         """Yield all commands for all cogs in all extensions."""
@@ -47,7 +47,12 @@ class TestCommandName:
         """Names and aliases of commands should be unique."""
         all_names = defaultdict(list)
         for cmd in self.get_all_commands():
-            func_name = f"{cmd.cog.__module__}.{cmd.callback.__qualname__}"
+            try:
+                func_name = f"{cmd.cog.__module__}.{cmd.callback.__qualname__}"
+            except AttributeError:
+                # If `cmd` is a SlashCommandGroup.
+                func_name = f"{cmd.cog.__module__}.{cmd.name}"
+
             name = cmd.qualified_name()
 
             if name in all_names:
