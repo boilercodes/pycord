@@ -37,11 +37,26 @@ class Bot(commands.Bot, ABC):
 
     async def on_interaction(self, interaction: Interaction) -> None:
         """Log whenever a command is used."""
-        arguments = [option['value'] for option in interaction.data.get("options", "")]
-        command = f"{interaction.data['name']} {arguments if arguments else ''}".rstrip()
+        name = interaction.data["name"]
+        arguments = []
+        for options in interaction.data.get("options", ""):
+            try:
+                # If the command has only 1 argument than `args` represents the argument.
+                arguments.append(options["value"])
+            except KeyError:
+                # Or else `args["options"]` represent a list of the arguments.
+                if "options" in options:
+                    arguments = [option["value"] for option in options["options"]]
+
+            # Make sure to include subcommand names.
+            if "name" in options:
+                name += " " + options["name"]
+
+        command = f"{name} {arguments if arguments else ''}".rstrip()
         if interaction.is_command():
             log.info(f"{interaction.user} used /{command} (ID: {interaction.user.id})")
 
+        # Wait until the interaction ends.
         await super().on_interaction(interaction)
         log.debug(f"/{command} ended (ID: {interaction.user.id})")
 
