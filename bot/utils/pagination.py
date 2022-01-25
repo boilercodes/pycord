@@ -52,7 +52,7 @@ class LinePaginator(Paginator):
         self.max_lines = max_lines
         self._current_page = [prefix]
         self._linecount = 0
-        self._count = len(prefix) + 1  # prefix + newline
+        self._count = len(prefix) + 1  # prefix + newline.
         self._pages = []
 
     def add_line(self, line: str = "", *, empty: bool = False) -> None:
@@ -62,7 +62,7 @@ class LinePaginator(Paginator):
         If the line exceeds the `max_size` then a RuntimeError is raised.
         Overrides the Paginator.add_line from inside discord.ext.commands in order to allow
         configuration of the maximum number of lines per page.
-        If `empty` is True, an empty line will be placed after the a given `line`.
+        If `empty` is True, an empty line will be placed after the given `line`.
         """
         if len(line) > self.max_size - len(self.prefix) - 2:
             raise RuntimeError(f"Line exceeds maximum page size {self.max_size - len(self.prefix) - 2}")
@@ -104,16 +104,16 @@ class LinePaginator(Paginator):
         def event_check(reaction_: Reaction, user_: Member) -> bool:
             """Make sure that this reaction is what we want to operate on."""
             no_restrictions = (
-                not restrict_to_user  # Pagination is not restricted
-                or user_.id == restrict_to_user.id  # The reaction was by a whitelisted user
+                not restrict_to_user  # Pagination is not restricted.
+                or user_.id == restrict_to_user.id  # The reaction was by a whitelisted user.
             )
 
             # Conditions for a successful pagination:
             return all((
-                reaction_.message.id == message.id,  # Reaction is on this message
-                reaction_.emoji in PAGINATION_EMOJIS,  # Reaction is one of the pagination emotes
-                user_.id != ctx.bot.user.id,  # Reaction was not made by the Bot
-                no_restrictions  # There were no restrictions
+                reaction_.message.id == message.id,  # Reaction is on this message.
+                reaction_.emoji in PAGINATION_EMOJIS,  # Reaction is one of the pagination emotes.
+                user_.id != ctx.bot.user.id,  # Reaction was not made by the Bot.
+                no_restrictions  # There were no restrictions.
             ))
 
         paginator = cls(prefix=prefix, suffix=suffix, max_size=max_size, max_lines=max_lines)
@@ -132,7 +132,7 @@ class LinePaginator(Paginator):
                 paginator.add_line(line, empty=empty)
             except Exception:
                 log.exception(f"Failed to add line to paginator: '{line}'")
-                raise  # Should propagate
+                raise  # Should propagate.
 
         embed.description = paginator.pages[current_page]
 
@@ -161,7 +161,7 @@ class LinePaginator(Paginator):
         log.debug(f"Paginator created with {len(paginator.pages)} pages (ID: {message.id})")
 
         for emoji in PAGINATION_EMOJIS:
-            # Add all the applicable emoji to the message
+            # Add all the applicable emoji to the message.
             await message.add_reaction(emoji)
 
         while True:
@@ -169,9 +169,9 @@ class LinePaginator(Paginator):
                 reaction, user = await ctx.bot.wait_for("reaction_add", timeout=timeout, check=event_check)
             except asyncio.TimeoutError:
                 log.debug(f"Timed out waiting for a reaction (ID: {message.id})")
-                break  # We're done, no reactions for the last 5 minutes
+                break  # We're done, no reactions for the last 5 minutes.
 
-            # Deletes the users reaction
+            # Deletes the users reaction.
             await message.remove_reaction(reaction.emoji, user)
 
             reaction_type = ""
@@ -211,7 +211,7 @@ class LinePaginator(Paginator):
                 current_page += 1
                 reaction_type = "next"
 
-            # Magic happens here, after page and reaction_type is set
+            # Magic happens here, after page and reaction_type is set.
             embed.description = ""
             await message.edit(embed=embed)
             embed.description = paginator.pages[current_page]
@@ -279,16 +279,16 @@ class ImagePaginator(Paginator):
         def event_check(reaction_: Reaction, user_: Member) -> bool:
             """Make sure that this reaction is what we want to operate on."""
             no_restrictions = (
-                not restrict_to_user  # Pagination is not restricted
-                or user_.id == restrict_to_user.id  # The reaction was by a whitelisted user
+                not restrict_to_user  # Pagination is not restricted.
+                or user_.id == restrict_to_user.id  # The reaction was by a whitelisted user.
             )
 
             # Conditions for a successful pagination:
             return all((
-                reaction_.message.id == message.id,  # Reaction is on this message
-                reaction_.emoji in PAGINATION_EMOJIS,  # Reaction is one of the pagination emotes
-                user_.id != ctx.bot.user.id,  # Reaction was not made by the Bot
-                no_restrictions  # There were no restrictions
+                reaction_.message.id == message.id,  # Reaction is on this message.
+                reaction_.emoji in PAGINATION_EMOJIS,  # Reaction is one of the pagination emotes.
+                user_.id != ctx.bot.user.id,  # Reaction was not made by the Bot.
+                no_restrictions  # There were no restrictions.
             ))
 
         paginator = cls(prefix=prefix, suffix=suffix)
@@ -348,9 +348,9 @@ class ImagePaginator(Paginator):
                 reaction, user = await ctx.bot.wait_for("reaction_add", timeout=timeout, check=event_check)
             except asyncio.TimeoutError:
                 log.debug(f"Timed out waiting for a reaction (ID: {message.id})")
-                break  # We're done, no reactions for the last 5 minutes
+                break  # We're done, no reactions for the last 5 minutes.
 
-            # Deletes the users reaction
+            # Deletes the users reaction.
             await message.remove_reaction(reaction.emoji, user)
 
             reaction_type = ""
@@ -390,7 +390,7 @@ class ImagePaginator(Paginator):
                 current_page += 1
                 reaction_type = "next"
 
-            # Magic happens here, after page and reaction_type is set
+            # Magic happens here, after page and reaction_type is set.
             embed.description = ""
             await message.edit(embed=embed)
             embed.description = paginator.pages[current_page]
