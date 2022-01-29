@@ -3,9 +3,8 @@ from enum import Enum
 from functools import partial
 from typing import Iterable, Optional
 
-from discord.commands import (ApplicationContext, AutocompleteContext,
-                              CommandPermission, Option, OptionChoice,
-                              SlashCommandGroup)
+from discord.commands import (ApplicationContext, AutocompleteContext, Option,
+                              OptionChoice, SlashCommandGroup, permissions)
 from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded
 from discord.ext import commands
 
@@ -37,7 +36,7 @@ class Extensions(commands.Cog):
 
     def get_extensions(self, ctx: AutocompleteContext) -> Iterable[OptionChoice]:
         """Return a list of extensions for the autocomplete."""
-        verb = ctx.command.qualified_name().rsplit()[-1]
+        verb = ctx.command.qualified_name.rsplit()[-1]
         extensions = {
             "load": EXTENSIONS - set(self.bot.extensions),
             "unload": set(self.bot.extensions) - UNLOAD_BLACKLIST,
@@ -56,12 +55,12 @@ class Extensions(commands.Cog):
         return results
 
     extensions = SlashCommandGroup(
-        "ext", "Load, unload and reload a bot's extension.",
+        "exts", "Load, unload and reload a bot's extension.",
         guild_ids=settings.dev_guild_ids,
-        permissions=[CommandPermission(settings.roles.admin, 8)]  # Administrator permission.
     )
 
     @extensions.command()
+    @permissions.has_role(settings.roles.admin)
     async def load(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -74,6 +73,7 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @extensions.command()
+    @permissions.has_role(settings.roles.admin)
     async def unload(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -86,6 +86,7 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @extensions.command()
+    @permissions.has_role(settings.roles.admin)
     async def reload(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -104,7 +105,7 @@ class Extensions(commands.Cog):
 
         try:
             action.value(self.bot, ext)
-            await self.bot.sync_commands()
+            # await self.bot.sync_commands()
         except (ExtensionAlreadyLoaded, ExtensionNotLoaded):
             if action is Action.RELOAD:
                 # When reloading, just load the extension if it was not loaded.

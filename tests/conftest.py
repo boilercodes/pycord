@@ -16,3 +16,18 @@ def bot():
 @pytest.fixture
 def ctx():
     return helpers.MockContext()
+
+
+@pytest.fixture
+def text_channel():
+    return helpers.MockTextChannel()
+
+
+@pytest.fixture
+def id():
+    return 297552404041814548  # Randomly generated id.
+
+
+@pytest.fixture
+def content():
+    return 297552404041814548  # Randomly generated id.

@@ -53,7 +53,7 @@ class TestCommandName:
                 # If `cmd` is a SlashCommandGroup.
                 func_name = f"{cmd.cog.__module__}.{cmd.name}"
 
-            name = cmd.qualified_name()
+            name = cmd.qualified_name
 
             if name in all_names:
                 conflicts = ", ".join(all_names.get(name, ""))
