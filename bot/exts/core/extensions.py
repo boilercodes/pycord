@@ -57,10 +57,10 @@ class Extensions(commands.Cog):
     extensions = SlashCommandGroup(
         "exts", "Load, unload and reload a bot's extension.",
         guild_ids=settings.dev_guild_ids,
+        permissions=[permissions.CommandPermission(settings.roles.admin, 1)]
     )
 
     @extensions.command()
-    @permissions.has_role(settings.roles.admin)
     async def load(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -73,7 +73,6 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @extensions.command()
-    @permissions.has_role(settings.roles.admin)
     async def unload(
             self, ctx: ApplicationContext,
             extension: Option(
@@ -86,7 +85,6 @@ class Extensions(commands.Cog):
         await ctx.respond(msg)
 
     @extensions.command()
-    @permissions.has_role(settings.roles.admin)
     async def reload(
             self, ctx: ApplicationContext,
             extension: Option(

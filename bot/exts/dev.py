@@ -1,6 +1,6 @@
 import logging
 
-from discord.commands import ApplicationContext, slash_command
+from discord.commands import ApplicationContext, permissions, slash_command
 from discord.ext import commands
 
 from bot import settings
@@ -16,6 +16,7 @@ class Dev(commands.Cog):
         self.bot = bot
 
     @slash_command(guild_ids=settings.dev_guild_ids)
+    @permissions.has_role(settings.roles.admin)
     async def test(self, ctx: ApplicationContext) -> None:
         """Usage for testing purposes."""
         await ctx.defer()

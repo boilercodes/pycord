@@ -25,6 +25,7 @@ class Impersonate(commands.Cog):
     message = SlashCommandGroup(
         "msg", "Talk and send messages under the bot's name.",
         guild_ids=settings.dev_guild_ids,
+        permissions=[permissions.CommandPermission(settings.roles.admin, 1)]
     )
 
     async def fetch_message(self, guild_id: int, channel_id: int, msg_id: int) -> Message:
@@ -45,7 +46,6 @@ class Impersonate(commands.Cog):
             raise NotFound(ClientResponse, f"Failed to fetch the message of id {msg_id}.")
 
     @message.command()
-    @permissions.has_role(settings.roles.admin)
     async def send(
             self, ctx: ApplicationContext,
             channel: Option(TextChannel, "Choose a channel."),
