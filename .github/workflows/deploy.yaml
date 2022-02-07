@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Deployment is not configured
-        run: echo "Choose between Heroku and Azure then delete this step (uncomment steps bellow accordignly)."
+        run: echo "Choose between Heroku and Azure then delete this step (uncomment steps bellow accordingly)."
 
 #    # Deploy and release to Heroku.
 #    steps:
