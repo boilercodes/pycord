@@ -33,7 +33,7 @@ class Client(BaseSettings):
     @validator("token")
     def check_token_format(cls, v: str) -> str:
         """Validate discord tokens format."""
-        pattern = re.compile(r"\w{24}\.\w{6}\.\w{27}")
+        pattern = re.compile(r".{24}\..{6}\..{27}")
         assert pattern.fullmatch(v), f"Discord token must follow >> {pattern.pattern} << pattern."
         return v
 
