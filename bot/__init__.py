@@ -48,7 +48,7 @@ if root.handlers:
 # Silence irrelevant loggers.
 logging.getLogger("discord").setLevel(logging.INFO)
 logging.getLogger("discord.gateway").setLevel(logging.ERROR)
-logging.getLogger("asyncio").setLevel(logging.ERROR)
+logging.getLogger("asyncio").setLevel(logging.CRITICAL)
 
 # Setup new logging configuration.
 logging.basicConfig(
