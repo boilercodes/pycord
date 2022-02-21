@@ -37,6 +37,9 @@ class Bot(commands.Bot, ABC):
 
     async def on_interaction(self, interaction: Interaction) -> None:
         """Log whenever a command is used."""
+        if not interaction.is_command():
+            return
+
         name = interaction.data["name"]
         arguments = []
         for options in interaction.data.get("options", ""):
