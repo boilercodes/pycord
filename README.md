@@ -45,7 +45,8 @@
 
 ## About The Project
 
-This is the template I use when creating discord bots with Pycord. It is pretty much complete, containing all the tools you need for a professional project.
+This is the template I use when creating discord bots with Pycord. It is pretty much complete, containing all the tools
+you need for a professional project.
 
 <!-- Usage -->
 
@@ -69,8 +70,8 @@ will change all the files to match your repository.
 
 ### GitHub:
 
-* [Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/test.yaml), 
-  [Build](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build.yaml) and 
+* [Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/test.yaml),
+  [Build](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build.yaml) and
   [Deploy](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/deploy.yaml) GitHub workflows.
 * [Issues](https://github.com/rmenai-blueprints/pycord/tree/main/.github/ISSUE_TEMPLATE)
   and [pull requests](https://github.com/rmenai-blueprints/pycord/blob/main/.github/pull_request_template.md) templates.
@@ -92,7 +93,7 @@ information.
 
 ## Acknowledgements
 
- - [sir-lancebot](https://github.com/python-discord/sir-lancebot)
+- [sir-lancebot](https://github.com/python-discord/sir-lancebot)
 
 <!-- CONTACT -->
 
