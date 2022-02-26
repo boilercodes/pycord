@@ -1,4 +1,4 @@
-name: Lint & Test
+name: Test
 
 on:
   push:
@@ -22,7 +22,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-test:
+  test:
+    name: Lint & Test
     runs-on: ubuntu-latest
     env:
       # Configure pip to cache dependencies and do a user install

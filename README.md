@@ -69,9 +69,9 @@ will change all the files to match your repository.
 
 ### GitHub:
 
-* [Lint & Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/validate.yaml)
-  and [Build & Push](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build-push.yaml) GitHub
-  workflows.
+* [Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/test.yaml), 
+  [Build](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build.yaml) and 
+  [Deploy](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/deploy.yaml) GitHub workflows.
 * [Issues](https://github.com/rmenai-blueprints/pycord/tree/main/.github/ISSUE_TEMPLATE)
   and [pull requests](https://github.com/rmenai-blueprints/pycord/blob/main/.github/pull_request_template.md) templates.
 
