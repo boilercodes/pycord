@@ -15,7 +15,7 @@ taskipy = "^1.10.1"
 
 [tool.poetry.dev-dependencies]
 colorlog = "^6.5.0"
-coverage = "^6.1.1"
+coverage = "^6.3.2"
 flake8 = "^3.9.2"
 flake8-annotations = "^2.6.2"
 flake8-bugbear = "^22.1.11"
