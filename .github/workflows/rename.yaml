@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   rename:
-    if: ${{ github.repository != 'rmenai-blueprints/pycord' }}
+    if: ${{ github.repository != 'boilercodes/pycord' }}
     runs-on: ubuntu-latest
 
     steps:
