@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.9"
 aiodns = "^3.0.0"
 arrow = "^1.2.1"
-py-cord = "^2.0.0b4"
+py-cord = "^2.0.0rc1"
 pydantic = "^1.9.1"
 taskipy = "^1.10.2"
 
