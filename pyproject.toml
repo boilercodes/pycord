@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "rmenai-blueprints/pycord"
+name = "boilercodes/pycord"
 version = "0.1.0"
 description = "My Pycord template"
 authors = ["rmenai <rami.menai@outlook.com>"]

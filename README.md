@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://github.com/rmenai-blueprints/pycord">
+  <a href="https://github.com/boilercodes/pycord">
     <img src="https://avatars.githubusercontent.com/u/89700626?v=4&s=160" alt="Logo" width="80" height="80">
   </a>
 
@@ -9,14 +9,14 @@
   <p align="center">
     A maintained fork of discord.py
     <br />
-    <a href="https://github.com/rmenai-blueprints/pycord"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/boilercodes/pycord"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/rmenai-blueprints/pycord">View Demo</a>
+    <a href="https://github.com/boilercodes/pycord">View Demo</a>
     ·
-    <a href="https://github.com/rmenai-blueprints/pycord/issues/new?assignees=&labels=&template=bug_report.md&title=">Report Bug</a>
+    <a href="https://github.com/boilercodes/pycord/issues/new?assignees=&labels=&template=bug_report.md&title=">Report Bug</a>
     ·
-    <a href="https://github.com/rmenai-blueprints/pycord/issues/new?assignees=&labels=&template=feature_request.md&title=">Request Feature</a>
+    <a href="https://github.com/boilercodes/pycord/issues/new?assignees=&labels=&template=feature_request.md&title=">Request Feature</a>
   </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -70,23 +70,23 @@ will change all the files to match your repository.
 
 ### GitHub:
 
-* [Test](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/test.yaml),
-  [Build](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/build.yaml) and
-  [Deploy](https://github.com/rmenai-blueprints/pycord/blob/main/.github/workflows/deploy.yaml) GitHub workflows.
-* [Issues](https://github.com/rmenai-blueprints/pycord/tree/main/.github/ISSUE_TEMPLATE)
-  and [pull requests](https://github.com/rmenai-blueprints/pycord/blob/main/.github/pull_request_template.md) templates.
+* [Test](https://github.com/boilercodes/pycord/blob/main/.github/workflows/test.yaml),
+  [Build](https://github.com/boilercodes/pycord/blob/main/.github/workflows/build.yaml) and
+  [Deploy](https://github.com/boilercodes/pycord/blob/main/.github/workflows/deploy.yaml) GitHub workflows.
+* [Issues](https://github.com/boilercodes/pycord/tree/main/.github/ISSUE_TEMPLATE)
+  and [pull requests](https://github.com/boilercodes/pycord/blob/main/.github/pull_request_template.md) templates.
 
 <!-- CONTRIBUTING -->
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/rmenai-blueprints/pycord/blob/main/CONTRIBUTING.md) for ways to get started.
+See [CONTRIBUTING.md](https://github.com/boilercodes/pycord/blob/main/CONTRIBUTING.md) for ways to get started.
 
 <!-- LICENSE -->
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/rmenai-blueprints/pycord/blob/main/LICENSE) for more
+Distributed under the MIT License. See [LICENSE](https://github.com/boilercodes/pycord/blob/main/LICENSE) for more
 information.
 
 <!-- ACKNOWLEDGMENTS -->
