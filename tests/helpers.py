@@ -286,7 +286,7 @@ class MockBot(CustomMockMixin, mock.MagicMock):
     Instances of this class will follow the specifications of `discord.ext.commands.Bot` instances.
     For more information, see the `MockGuild` docstring.
     """
-    spec_set = Bot()
+    spec_set = Bot(mock=True)
     additional_spec_asyncs = ("wait_for",)
 
     def __init__(self, **kwargs) -> None:
