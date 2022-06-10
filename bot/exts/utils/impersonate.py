@@ -5,8 +5,7 @@ import re
 import discord.utils
 from aiohttp import ClientResponse
 from discord import Embed, Message, TextChannel
-from discord.commands import (ApplicationContext, Option, SlashCommandGroup,
-                              permissions)
+from discord.commands import ApplicationContext, Option, SlashCommandGroup
 from discord.errors import NotFound
 from discord.ext import commands
 
@@ -24,8 +23,7 @@ class Impersonate(commands.Cog):
 
     message = SlashCommandGroup(
         "msg", "Talk and send messages under the bot's name.",
-        guild_ids=settings.dev_guild_ids,
-        permissions=[permissions.CommandPermission(settings.roles.admin, 1)]
+        guild_ids=settings.dev_guild_ids
     )
 
     async def fetch_message(self, guild_id: int, channel_id: int, msg_id: int) -> Message:

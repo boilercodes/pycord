@@ -4,7 +4,7 @@ from functools import partial
 from typing import Iterable, Optional
 
 from discord.commands import (ApplicationContext, AutocompleteContext, Option,
-                              OptionChoice, SlashCommandGroup, permissions)
+                              OptionChoice, SlashCommandGroup)
 from discord.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded
 from discord.ext import commands
 
@@ -56,8 +56,7 @@ class Extensions(commands.Cog):
 
     extensions = SlashCommandGroup(
         "exts", "Load, unload and reload a bot's extension.",
-        guild_ids=settings.dev_guild_ids,
-        permissions=[permissions.CommandPermission(settings.roles.admin, 1)]
+        guild_ids=settings.dev_guild_ids
     )
 
     @extensions.command()

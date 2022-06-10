@@ -17,14 +17,23 @@ class Bot(commands.Bot, ABC):
 
     name = settings.client.name
 
-    def __init__(self, **kwargs):
-        """Initiate the client with slash commands."""
+    def __init__(self, mock: bool = False, **kwargs):
+        """
+        Initiate the client with slash commands.
+
+        Args:
+            mock (bool): Whether to mock the client or not.
+        """
         super().__init__(**kwargs)
-        log.debug("Starting the HTTP session")
-        self.http_session = ClientSession(
-            connector=TCPConnector(resolver=AsyncResolver(), family=socket.AF_INET),
-            trace_configs=[trace_config]
-        )
+        if not mock:
+            log.debug("Starting the HTTP session")
+            self.http_session = ClientSession(
+                connector=TCPConnector(resolver=AsyncResolver(), family=socket.AF_INET),
+                trace_configs=[trace_config]
+            )
+        else:
+            log.debug("Mocking the HTTP session")
+            self.http_session = None
 
     async def on_ready(self) -> None:
         """Triggered when the bot is ready."""
