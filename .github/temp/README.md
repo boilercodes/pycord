@@ -1,56 +1,13 @@
-<br />
-<p align="center">
-  <a href="https://github.com/{repo}">
-    <img src="https://avatars.githubusercontent.com/u/89700626?v=4&s=160" alt="Logo" width="80" height="80">
-  </a>
+# [{title}](./README.md) &middot; [![GitHub license]](./LICENSE) ![Test Action]
 
-<h3 align="center">{title}</h3>
+<!-- Table of Contents -->
 
-  <p align="center">
-    {description}
-    <br />
-    <a href="https://github.com/{repo}"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/{repo}">View Demo</a>
-    ·
-    <a href="https://github.com/{repo}/issues/new?assignees=&labels=&template=bug_report.md&title=">Report Bug</a>
-    ·
-    <a href="https://github.com/{repo}/issues/new?assignees=&labels=&template=feature_request.md&title=">Request Feature</a>
-  </p>
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#installation">Installation</a>
-      <ul>
-        <li><a href="#using-docker">Using Docker</a></li>
-        <li><a href="#for-development">For development</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#environment-variables">Environment Variables</a>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-{description}.
-
-<!-- INSTALLATION -->
+- [Installation](#installation)
+    - [For development](#for-development)
+    - [For production](#for-production)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
+- [License](#license)
 
 ## Installation
 
@@ -60,41 +17,43 @@ The first step will be to clone the repo
 git clone https://github.com/{repo}.git
 ```
 
-### Using Docker
-
-Using Docker is generally recommended (but not strictly required) because it abstracts away some additional set up work.
-
-The requirements for Docker are:
-
-* [Docker CE](https://docs.docker.com/install/)
-
 ### For development
 
 The requirements are:
 
-* [Python](https://www.python.org/downloads/) and [Poetry](https://python-poetry.org/docs/)
+* [Python] and [Poetry]
 
 1. Install the dependencies
    ```shell
    poetry install
    ```
 
+### For production
+
+Using Docker is generally recommended (but not strictly required) because it abstracts away some additional set up work.
+
+The requirements for Docker are:
+
+* [Docker CE]
+* [Docker Compose]
+    * `pip install docker-compose`
+    * This is only a required step for linux. Docker comes bundled with docker-compose on Mac OS and Windows.
+
+
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file.
+To run this project, you will need to add the following environment variables.
 
-| Variable       | Description                | Default    |
-|----------------|----------------------------|------------|
-| BOT_NAME       | The name of the bot        | "Bot"      |
-| BOT_TOKEN      | The token of the bot       | * Required |
-| CHANNEL_DEVLOG | The devlog channel id      | 0          |
-| DEBUG          | Toggles debug mode         | False      |
-| DEV_GUILD_IDS  | The dev servers of the bot | []         |
-| GUILD_IDS      | The servers of the bot     | * Required |
-| ROLE_ADMIN     | The admin role name        | "Admin" |
+| Variable       | Description                | Default     |
+|----------------|----------------------------|-------------|
+| BOT_NAME       | The name of the bot        | "Bot"       |
+| BOT_TOKEN      | The token of the bot       | * Required  |
+| CHANNEL_DEVLOG | The devlog channel id      | 0           |
+| DEBUG          | Toggles debug mode         | False       |
+| DEV_GUILD_IDS  | The dev servers of the bot | []          |
+| GUILD_IDS      | The servers of the bot     | * Required  |
+| ROLE_ADMIN     | The admin role name        | "Admin"     |
 | ROLE_EVERYONE  | The everyone role name     | "@everyone" |
-
-<!-- USAGE EXAMPLES -->
 
 ## Usage
 
@@ -104,12 +63,24 @@ Now you are done! You can run the project using
 poetry run task start
 ```
 
-## Contributing
+or test the project using
 
-See [CONTRIBUTING.md](https://github.com/{repo}/blob/main/CONTRIBUTING.md) for ways to get started.
-
-<!-- LICENSE -->
+```shell
+poetry run task test
+```
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/{repo}/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
+
+<!-- Packages Links -->
+
+[docker ce]: https://docs.docker.com/install/
+[docker compose]: https://docs.docker.com/compose/install/
+[poetry]: https://python-poetry.org/docs/
+[python]: https://www.python.org/downloads/
+
+<!-- Shields.io links -->
+
+[gitHub license]: https://img.shields.io/badge/license-MIT-blue.svg
+[test action]: https://github.com/{repo}/actions/workflows/test.yaml/badge.svg

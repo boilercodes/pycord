@@ -1,102 +1,91 @@
-<br />
-<p align="center">
-  <a href="https://github.com/boilercodes/pycord">
-    <img src="https://avatars.githubusercontent.com/u/89700626?v=4&s=160" alt="Logo" width="80" height="80">
-  </a>
+# [Pycord Template](./README.md) &middot; [![GitHub license]](./LICENSE) ![Test Action]
 
-<h3 align="center">Pycord</h3>
+This is an advanced template to start to code your own and personalized discord bot in Python. It includes testing
+via mocking the Bot instance, pagination and more. This template also comes with production-ready commands like:
 
-  <p align="center">
-    A maintained fork of discord.py
-    <br />
-    <a href="https://github.com/boilercodes/pycord"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/boilercodes/pycord">View Demo</a>
-    ·
-    <a href="https://github.com/boilercodes/pycord/issues/new?assignees=&labels=&template=bug_report.md&title=">Report Bug</a>
-    ·
-    <a href="https://github.com/boilercodes/pycord/issues/new?assignees=&labels=&template=feature_request.md&title=">Request Feature</a>
-  </p>
+- `/ping` - Displays the bot's latency and uptime.
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#features">Features</a></li>
-    <ul>
-        <li><a href="#project">Project</a></li>
-        <li><a href="#github">Github</a></li>
-      </ul>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
+and admin commands like:
+
+- `/msg send [channel] [content]` - Sends a message to a channel.
+- `/exts unload [extension]` - Unloads an extension (a command).
 
 
+---------------------------------------------------------------------------------------------------------------------
 
-<!-- ABOUT THE PROJECT -->
+There are also utils that can help you with your bot development such as pagination.
 
-## About The Project
 
-This is the template I use when creating discord bots with Pycord. It is pretty much complete, containing all the tools
-you need for a professional project.
+<!-- Table of Contents -->
 
-<!-- Usage -->
+- [Usage](#usage)
+- [Features](#features)
+  - [Project](#project)
+  - [Github](#github)
+- [License](#license)
+- [Contact](#contact)
 
 ## Usage
 
-All you need to do is click on the "Use this template" button. When the repo is created a GitHub action will start. It
-will change all the files to match your repository.
-
-<!-- Features -->
+All you need to do is click on the [Use this template] button. When your repo is created, wait at least 20 seconds until
+the running action ends.
 
 ## Features
 
 ### Project:
 
-* [Docker](https://www.docker.com/) for container packaging.
-* [Poetry](https://python-poetry.org/) for dependency management.
-* [.env](https://pypi.org/project/python-dotenv/) for environment variables.
-* [Colorlog](https://pypi.org/project/colorlog/) for colorful logging.
-* [Pytest](https://docs.pytest.org/en/6.2.x/) for writing powerful tests.
-* [pre-commit](https://pre-commit.com/) and [flake8](https://flake8.pycqa.org/en/latest/) for git hooks linting.
+* [.env] for environment variables.
+* [Colorlog] for colorful logging.
+* [Docker] for container packaging.
+* [Poetry] for dependency management.
+* [Pycord] for creating discord bots.
+* [Pydantic] for settings management.
+* [Pytest] for writing powerful tests.
+* [pre-commit] and [flake8] for git hooks linting.
 
-### GitHub:
+### GitHub
 
-* [Test](https://github.com/boilercodes/pycord/blob/main/.github/workflows/test.yaml),
-  [Build](https://github.com/boilercodes/pycord/blob/main/.github/workflows/build.yaml) and
-  [Deploy](https://github.com/boilercodes/pycord/blob/main/.github/workflows/deploy.yaml) GitHub workflows.
-* [Issues](https://github.com/boilercodes/pycord/tree/main/.github/ISSUE_TEMPLATE)
-  and [pull requests](https://github.com/boilercodes/pycord/blob/main/.github/pull_request_template.md) templates.
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/boilercodes/pycord/blob/main/CONTRIBUTING.md) for ways to get started.
-
-<!-- LICENSE -->
+- [Community Standards] files.
+- [Issues](./.github/ISSUE_TEMPLATE) and [Pull Requests](./.github/pull_request_template.md) templates.
+- [Packages] as Docker images.
+- [Releases] with auto-generated release notes.
+- [Test](./.github/workflows/test.yaml), [Build](./.github/workflows/build.yaml)
+  and [Deploy](./.github/workflows/deploy.yaml) GitHub workflows.
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/boilercodes/pycord/blob/main/LICENSE) for more
-information.
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgements
-
-- [sir-lancebot](https://github.com/python-discord/sir-lancebot)
-
-<!-- CONTACT -->
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
 
 ## Contact
 
-Menai Rami - [@menai_rami](https://twitter.com/menai_rami) - rami.menai@outlook.com
+Rami Menai - [@menai_rami][twitter] - [rami.menai@outlook.com][email]
+
+<!-- Packages Links -->
+
+[.env]: https://pypi.org/project/python-dotenv/
+[colorlog]: https://pypi.org/project/colorlog/
+[docker]: https://www.docker.com/
+[dotenv]: https://pypi.org/project/python-dotenv/
+[flake8]: https://flake8.pycqa.org/en/latest/
+[poetry]: https://python-poetry.org/
+[pre-commit]: https://pre-commit.com/
+[pycord]: https://docs.pycord.dev/en/master/
+[pydantic]: https://pydantic-docs.helpmanual.io/
+[pytest]: https://docs.pytest.org/en/6.2.x/
+
+<!-- Repository links -->
+
+[community standards]: https://github.com/boilercodes/pycord/community
+[releases]: https://github.com/boilercodes/pycord/releases/
+[packages]: https://github.com/boilercodes/pycord/pkgs/container/pycord
+[use this template]: https://github.com/boilercodes/pycord/generate
+
+<!-- Shields.io links -->
+
+[gitHub license]: https://img.shields.io/badge/license-MIT-blue.svg
+[test action]: https://github.com/boilercodes/pycord/actions/workflows/test.yaml/badge.svg
+
+<!-- Social Media links -->
+
+[email]: mailto:rami.menai@outlook.com
+[twitter]: https://twitter.com/menai_rami
