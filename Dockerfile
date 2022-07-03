@@ -4,10 +4,6 @@ FROM python:3.9-slim
 ENV PIP_NO_CACHE_DIR=false \
     POETRY_VIRTUALENVS_CREATE=false
 
-# Install git.
-RUN apt-get update && \
-    apt-get install --assume-yes -y git
-
 # Install Poetry.
 RUN pip install --upgrade poetry
 
